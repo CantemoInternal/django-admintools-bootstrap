@@ -2,7 +2,7 @@ Django Admin Bootstrap theme
 ============================
 
 Twitter Bootstrap support for Django Admin. Requires django-admin-tools package.
-
+Forked for adding Django 1.5 support
 
 TODO:
 
