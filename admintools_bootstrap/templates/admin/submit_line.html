@@ -1,6 +1,9 @@
-{% load i18n %}
+{% load i18n admin_urls %}
 <div class="well submit-row" {% if is_popup %}style="overflow: auto;"{% endif %}>
-{% if show_delete_link %}<a href="delete/" class="deletelink btn btn-danger"><i class="icon-trash icon-white"></i> {% trans "Delete" %}</a>{% endif %}
+  {% if show_delete_link and original %}
+    {% url opts|admin_urlname:'delete' original.pk|admin_urlquote as delete_url %}
+    <p class="deletelink-box"><a href="{% add_preserved_filters delete_url %}" class="deletelink btn btn-danger">{% trans "Delete" %}</a></p>
+{% endif %}
 <div class="pull-right">
   {% if show_save %}<input type="submit" value="{% trans 'Save' %}" class="default btn btn-success" name="_save" {{ onclick_attrib }}/>{% endif %}
   {% if show_save_as_new %}<input type="submit" value="{% trans 'Save as new' %}" name="_saveasnew" class="btn btn-info" {{ onclick_attrib }}/>{%endif%}
